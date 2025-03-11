@@ -31,9 +31,9 @@ const HeadPhone = () => {
       {/* Text on the left */}
       <div className="left h-3/2 w-1/2 pl-12 flex flex-col gap-6 text-white items-center justify-center">
         {[
-          { title: "Immersive Sound", subtitle: "Crystal-Clear Audio", text: "Experience deep bass and precise treble like never before." },
-          { title: "Comfortable Fit", subtitle: "All-Day Wear", text: "Soft ear cushions and an adjustable headband ensure comfort." },
-          { title: "Noise Cancellation", subtitle: "Distraction-Free", text: "Advanced noise-canceling technology blocks out the world." },
+          { title: "Pure Audio Experience", subtitle: "High-Fidelity Sound", text: "Immerse yourself in studio-quality sound with deep bass and crystal-clear highs." },
+          { title: "Unmatched Comfort", subtitle: "Designed for Long Sessions", text: "Ergonomic memory foam ear cups and a lightweight build for all-day wear." },
+          { title: "Next-Gen Noise Cancelling", subtitle: "Block Out the World", text: "Adaptive ANC technology ensures an undisturbed, immersive listening experience." },
         ].map((item, index) => (
           <div key={index} ref={(el) => (textRefs.current[index] = el)} className="opacity-0 transform translate-y-10">
             <h1 className="text-4xl font-bold">{item.title}</h1>

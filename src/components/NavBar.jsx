@@ -1,11 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 const NavBar = () => {
   const logoRef = useRef(null);
   const navItemsRef = useRef([]);
-  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useGSAP(() => {
     gsap.from(logoRef.current, {
@@ -26,18 +25,11 @@ const NavBar = () => {
   }, []);
 
   const menuItems = [
-    { name: "Store", dropdown: ["Shop PC", "Shop Console", "Shop Mobile"] },
-    { name: "PC", dropdown: ["Laptops", "Desktops", "Accessories"] },
-    { name: "Console", dropdown: ["Controllers", "Headsets", "Gaming Chairs"] },
-    { name: "Mobile", dropdown: ["Phones", "Accessories", "Wearables"] },
-    { name: "Furniture & Lifestyle", dropdown: ["Gaming Chairs", "Desks", "Merch"] },
-    { name: "Gold", dropdown: ["Recharge", "Redeem", "Earn Rewards"] },
-    { name: "Community", dropdown: ["Forums", "Events", "Social"] },
-    { name: "Support", dropdown: ["Help", "FAQ", "Warranty"] },
+    "Store", "PC", "Console", "Mobile", "Furniture & Lifestyle", "Gold", "Community", "Support"
   ];
 
   return (
-    <nav className="h-15 flex justify-around border-b border-[#44D62C] relative z-1">
+    <nav className="h-15 flex justify-around relative z-1">
       <ul className="flex gap-18 items-center relative electrolize-regular">
         <li className="px-0">
           <img
@@ -51,20 +43,9 @@ const NavBar = () => {
           <li
             key={index}
             ref={(el) => (navItemsRef.current[index] = el)}
-            className="relative cursor-pointer"
-            onMouseEnter={() => setActiveDropdown(index)}
-            onMouseLeave={() => setActiveDropdown(null)}
+            className="cursor-pointer"
           >
-            {item.name}
-            {activeDropdown === index && (
-              <ul className="absolute top-full left-0 bg-black text-white p-2 rounded-md shadow-lg w-40">
-                {item.dropdown.map((subItem, subIndex) => (
-                  <li key={subIndex} className="p-2 hover:bg-[#44D62C]">
-                    {subItem}
-                  </li>
-                ))}
-              </ul>
-            )}
+            {item}
           </li>
         ))}
       </ul>

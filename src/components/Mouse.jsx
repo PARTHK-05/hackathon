@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Mouse = () => {
   const sectionRef = useRef(null);
@@ -28,11 +27,13 @@ const Mouse = () => {
   return (
     <div ref={sectionRef} className="w-full min-h-screen flex justify-center items-center overflow-hidden">
       <div className="left w-1/2 flex justify-center items-center">
-        <img
-          src="https://png.pngtree.com/png-vector/20250223/ourlarge/pngtree-razer-basilisk-v3-wired-gaming-mouse-next-level-fps-accuracy-png-image_15565557.png"
-          alt="Gaming Mouse"
+        <video
+          src="https://assets2.razerzone.com/images/pnx.assets/b971a77538a974da5318a76b0a7b85d3/razer-viper-v3-pro-faker-edition-video.mp4"
           className="w-3/4 rounded-lg shadow-lg"
-        />
+          autoPlay
+          loop
+          muted
+        ></video>
       </div>
       <div className="right w-1/2 px-6 flex flex-col gap-6 text-white">
         {[

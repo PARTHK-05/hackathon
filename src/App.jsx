@@ -7,6 +7,8 @@ import Keyboard from "./components/Keyboard";
 import HeadPhone from "./components/HeadPhone";
 import Mouse from "./components/Mouse";
 import PS5Console from "./components/PS5Console";
+import Products from "./components/Products";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -14,21 +16,34 @@ const App = () => {
       <div className="h-screen w-full bg-black text-white">
         <NavBar />
         <div className="relative">
+
+          <div className="relative w-full h-screen overflow-hidden">
+            {/* Video Background */}
+            <video
+              autoPlay
+              muted
+              loop
+              className="absolute top-0 left-0 w-full h-full object-cover"
+            >
+              <source src="https://www.apple.com/105/media/us/apple-vision-pro/2023/7e268c13-eb22-493d-a860-f0637bacb569/anim/spatial-audio/large.mp4 " type="video/mp4" />
+            </video>
+
+            {/* Content Overlay */}
+            <div className="relative z-10 flex items-center justify-center h-full bg-black/50 text-white">
+            </div>
+          </div>
           <h1
-            className="absolute text-[10rem] top-[33%] left-[35%] text-[#44D62C] font-extrabold 
+            className="absolute text-[10rem] top-[33%] left-[35%] text-[#22ff00] font-extrabold 
           drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] 
           [text-shadow:_4px_4px_0px_rgba(0,0,0,0.8)]
           zen-dots-regular glitch"
           >
             Razer
           </h1>
-          <Particle />
         </div>
       </div>
 
-      <div className="h-screen w-full bg-black text-white">
-        <Keyboard />
-      </div>
+      <Products />
 
       <div className="bg-black text-white">
         <section className="h-screen flex items-center justify-center">
@@ -46,6 +61,7 @@ const App = () => {
         <section className="h-screen flex items-center justify-center">
           <Mouse />
         </section>
+        <Footer />
       </div>
     </>
   );

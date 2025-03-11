@@ -10,8 +10,6 @@ const Laptop = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const linksRef = useRef(null);
-  const img1Ref = useRef(null);
-  const img2Ref = useRef(null);
   const razerRef = useRef([]);
 
   useGSAP(() => {
@@ -40,16 +38,6 @@ const Laptop = () => {
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power3.out" },
         "-=0.5"
-      )
-      .fromTo(
-        [img1Ref.current, img2Ref.current],
-        { x: (i) => (i === 0 ? -500 : 500), opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.2, ease: "power4.out" }
-      )
-      .fromTo(
-        razerRef.current,
-        { x: (i) => (i % 2 === 0 ? -200 : 200), opacity: 0, scale: 0.5, rotation: -10 },
-        { x: 0, opacity: 1, scale: 1, rotation: 0, duration: 1.2, stagger: 0.15, ease: "elastic.out(1, 0.6)" }
       );
 
     gsap.to(razerRef.current, {
@@ -62,73 +50,37 @@ const Laptop = () => {
         start: "top 80%",
       },
     });
-
-    gsap.from(".razer-container", {
-      scale: 0,
-      opacity: 0,
-      duration: 1,
-      delay: 0.5,
-    });
-    
-   
-    gsap.to(".razer-container", {
-      y: 300, 
-      x: 300,
-      opacity:0,
-      scale: 0.5, 
-      duration: 10, 
-      scrollTrigger: {
-        trigger: ".razer-container",
-        start: "top center", 
-        end: "bottom center",
-        scrub: 3, 
-      }
-    });
-
-    // gsap.to(".razer-container", {
-    //   y: 800, 
-    //   x: -100,
-    //   scale: 0.7, 
-    //   duration: 5, 
-    //   scrollTrigger: {
-    //     trigger: ".razer-container",
-    //     start: "700px center",  // Animation starts when scrolled to 600px
-    //     end: "bottom center",
-    //     scrub: 3, 
-    //   }
-    // });
-    
-
   });
 
   return (
-    <div ref={sectionRef} className="bg-black text-white text-center py-10 flex flex-col items-center">
-      <h1 ref={titleRef} className="text-5xl font-bold">NEW RAZER BLADE 16</h1>
-      <p ref={subtitleRef} className="text-lg text-gray-400 mt-2">SLIMMER. SMARTER. SHARPER.</p>
+    <div ref={sectionRef} className="relative bg-black text-white text-center py-16 px-6 flex flex-col items-center">
+      {/* Title */}
+      <h1 ref={titleRef} className="text-6xl font-extrabold text-green-500 drop-shadow-lg">
+        NEW RAZER BLADE 16
+      </h1>
+      <p ref={subtitleRef} className="text-xl text-gray-400 mt-2">
+        SLIMMER. SMARTER. SHARPER.
+      </p>
 
-      <div ref={linksRef} className="mt-4 flex justify-center gap-6 text-green-500 text-lg">
-        <a href="#" className="hover:underline">Learn More &gt;</a>
-        <a href="#" className="hover:underline">Notify Me &gt;</a>
+      {/* Links */}
+      <div ref={linksRef} className="mt-6 flex gap-8 text-green-400 text-lg">
+        <a href="#" className="hover:underline transition duration-300">Learn More &gt;</a>
+        <a href="#" className="hover:underline transition duration-300">Notify Me &gt;</a>
       </div>
 
-      <div className="razer-container absolute top-1/2 bg-green-500 text-black p-10 rounded-xl shadow-xl flex justify-center w-1/3">
-        <h1 className="text-6xl font-extrabold flex space-x-2">
-          {"RAZER".split("").map((letter, index) => (
-            <span key={index} ref={(el) => (razerRef.current[index] = el)}>
-              {letter}
-            </span>
-          ))}
-        </h1>
-      </div>
+      {/* Animated Razer Text */}
 
-      <div className="flex items-center justify-center mt-10 gap-10">
-        <div className="flex flex-col items-center">
-          <div ref={img1Ref} className="w-[500px] h-[300px] overflow-hidden">
-            <img src="/img1.png" alt="Laptop Image 1" className="w-full h-full object-contain block" />
-          </div>
-          <div ref={img2Ref} className="w-[500px] h-[300px] overflow-hidden mt-4">
-            <img src="/img2.png" alt="Laptop Image 2" className="w-full h-full object-contain block" />
-          </div>
+
+      {/* Laptop Video */}
+      <div className="flex flex-col md:flex-row items-center justify-center mt-20 gap-12">
+        <div className="w-[900px] h-[400px] overflow-hidden rounded-lg shadow-xl">
+          <video
+            src="https://assets2.razerzone.com/images/pnx.assets/089d09b3b83461970b76ac3bfb1ec1ca/razer-blade-18-kira11-main-kv-animation-1920x700.mp4"
+            autoPlay
+
+            muted
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
     </div>

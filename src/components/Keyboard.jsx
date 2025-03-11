@@ -30,16 +30,15 @@ const Keyboard = () => {
     <div ref={sectionRef} className="w-full min-h-screen flex justify-center items-center overflow-hidden">
       {/* Spline 3D Model on the left */}
       <div className="left w-1/2 flex justify-center items-center">
-      <Spline scene="https://prod.spline.design/R-UhQviqVnGYnrl4/scene.splinecode" />
-
+        <Spline scene="https://prod.spline.design/R-UhQviqVnGYnrl4/scene.splinecode" />
       </div>
 
       {/* Text Content on the right */}
       <div className="right w-1/2 px-6 flex flex-col gap-6 text-white">
         {[
-          { title: "Keyboard", subtitle: "Mechanical Perfection", text: "Experience ultimate precision and tactile feedback." },
-          { title: "RGB Lighting", subtitle: "Customizable Colors", text: "Sync with your setup for a stunning visual experience." },
-          { title: "Durability", subtitle: "Built to Last", text: "Premium materials ensure long-lasting performance." },
+          { title: "Engineered for Excellence", subtitle: "Precision & Performance", text: "Experience mechanical perfection with unmatched speed and tactile feedback." },
+          { title: "Dynamic RGB Lighting", subtitle: "Personalized Visuals", text: "Customize lighting effects to match your gaming setup and mood." },
+          { title: "Built to Last", subtitle: "Durability & Strength", text: "Crafted with premium materials to ensure peak performance for years." },
         ].map((item, index) => (
           <div key={index} ref={(el) => (textRefs.current[index] = el)} className="opacity-0 transform translate-y-10">
             <h1 className="text-4xl font-bold">{item.title}</h1>
