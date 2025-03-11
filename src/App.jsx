@@ -16,9 +16,9 @@ const App = () => {
       <div className="h-screen w-full bg-black text-white">
         <NavBar />
         <div className="relative">
+          <Particle />
 
-          <div className="relative w-full h-screen overflow-hidden">
-            {/* Video Background */}
+          {/* <div className="relative w-full h-screen overflow-hidden">
             <video
               autoPlay
               muted
@@ -28,12 +28,11 @@ const App = () => {
               <source src="https://www.apple.com/105/media/us/apple-vision-pro/2023/7e268c13-eb22-493d-a860-f0637bacb569/anim/spatial-audio/large.mp4 " type="video/mp4" />
             </video>
 
-            {/* Content Overlay */}
             <div className="relative z-10 flex items-center justify-center h-full bg-black/50 text-white">
             </div>
-          </div>
+          </div> */}
           <h1
-            className="absolute text-[10rem] top-[33%] left-[35%] text-[#22ff00] font-extrabold 
+            className="absolute text-[10rem] top-[33%] left-[35%] text-[#3bb328] font-extrabold 
           drop-shadow-[4px_4px_0px_rgba(0,0,0,0.8)] 
           [text-shadow:_4px_4px_0px_rgba(0,0,0,0.8)]
           zen-dots-regular glitch"

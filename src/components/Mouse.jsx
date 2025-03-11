@@ -26,7 +26,7 @@ const Mouse = () => {
 
   return (
     <div ref={sectionRef} className="w-full min-h-screen flex justify-center items-center overflow-hidden">
-      <div className="left w-1/2 flex justify-center items-center">
+      <div className="left w-full flex justify-center items-center">
         <video
           src="https://assets2.razerzone.com/images/pnx.assets/b971a77538a974da5318a76b0a7b85d3/razer-viper-v3-pro-faker-edition-video.mp4"
           className="w-3/4 rounded-lg shadow-lg"
