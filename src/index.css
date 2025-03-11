@@ -1,14 +1,144 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Notable&display=swap');
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+}
+
+/* Fonts */
+.electrolize-regular {
+  font-family: "Electrolize", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-dots-regular {
+  font-family: "Zen Dots", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.product-container {
+  position: relative;
+}
+
+.product-background {
+  transition: filter 0.3s ease;
+}
+
+.product-keyboard {
+  transition: box-shadow 0.3s ease;
+  -webkit-mask-image: url('../assets/keyboard.png');
+  /* For webkit-based browsers */
+  mask-image: url('../assets/keyboard.png');
+  /* Standard mask image */
+  mask-size: contain;
+  /* Ensure the mask fits the image */
+}
+
+.product-keyboard:hover {
+  box-shadow: 0 0 15px #44D62C;
+}
+
+.product-keyboard:hover~.product-background {
+  filter: brightness(50%);
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
   }
-  
-  html, body {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    overflow-x: hidden;
+
+  50% {
+    transform: translateY(-20px);
   }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.floating-animation {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes glitch {
+
+  0%,
+  80% {
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  }
+
+  81% {
+    text-shadow: -4px -4px 0px #ff0000, 4px 4px 0px #00ff00;
+  }
+
+  83% {
+    text-shadow: 4px -4px 0px #0000ff, -4px 4px 0px #ff00ff;
+  }
+
+  85% {
+    text-shadow: -4px 4px 0px #ffff00, 4px -4px 0px #00ffff;
+  }
+
+  87% {
+    text-shadow: 4px 4px 0px #ff0000, -4px -4px 0px #00ff00;
+  }
+
+  100% {
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  }
+}
+
+
+.glitch {
+  animation: glitch 1.5s steps(5, end) infinite;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pop {
+  animation: popIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+}
+
+#tooltip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background-color: #37b424;
+  color: black;
+  /* transform: translate(-50%, -100%); */
+}
+
+img:hover+#tooltip {
+  opacity: 1;
+}
+
+img:hover {
+  cursor: pointer;
+}

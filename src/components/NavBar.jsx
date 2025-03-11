@@ -1,40 +1,73 @@
 import { useGSAP } from "@gsap/react";
-import gsap from 'gsap';
-import React from "react";
+import gsap from "gsap";
+import React, { useRef, useState } from "react";
 
 const NavBar = () => {
+  const logoRef = useRef(null);
+  const navItemsRef = useRef([]);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
+  useGSAP(() => {
+    gsap.from(logoRef.current, {
+      opacity: 0,
+      y: -50,
+      rotate: -360,
+      duration: 1,
+      ease: "power2.out",
+    });
 
-    useGSAP(()=>{
-        
-        gsap.from(".nav-contant",{
-            y:-100,
-            delay:.5,
-            duration:1,
-            stagger:1,
-        })
-    })
+    gsap.from(navItemsRef.current, {
+      opacity: 0,
+      y: -30,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out",
+    });
+  }, []);
+
+  const menuItems = [
+    { name: "Store", dropdown: ["Shop PC", "Shop Console", "Shop Mobile"] },
+    { name: "PC", dropdown: ["Laptops", "Desktops", "Accessories"] },
+    { name: "Console", dropdown: ["Controllers", "Headsets", "Gaming Chairs"] },
+    { name: "Mobile", dropdown: ["Phones", "Accessories", "Wearables"] },
+    { name: "Furniture & Lifestyle", dropdown: ["Gaming Chairs", "Desks", "Merch"] },
+    { name: "Gold", dropdown: ["Recharge", "Redeem", "Earn Rewards"] },
+    { name: "Community", dropdown: ["Forums", "Events", "Social"] },
+    { name: "Support", dropdown: ["Help", "FAQ", "Warranty"] },
+  ];
 
   return (
-    <nav className="w-full bg-transparent text-white py-8 px-6 ">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-       
-        <div className=" logo text-3xl font-bold cursor-pointer">LOGO</div>
-
-       
-        <div className="nav-contant hidden md:flex space-x-6 text-lg gap-8">
-          <a href="#" className="hover:text-gray-400 transition">Store</a>
-          <a href="#" className="hover:text-gray-400 transition">PC</a>
-          <a href="#" className="hover:text-gray-400 transition">Console</a>
-          <a href="#" className="hover:text-gray-400 transition">Mobile</a>
-          <a href="#" className="hover:text-gray-400 transition">Furniture & Lifestyle</a>
-          <a href="#" className="hover:text-gray-400 transition">Gold</a>
-          <a href="#" className="hover:text-gray-400 transition">Community</a>
-          <a href="#" className="hover:text-gray-400 transition">Support</a>
-        </div>
-
-        <div className="md:hidden text-2xl cursor-pointer">&#9776;</div>
-      </div>
+    <nav className="h-15 flex justify-around border-b border-[#44D62C] relative z-1">
+      <ul className="flex gap-18 items-center relative electrolize-regular">
+        <li className="px-0">
+          <img
+            ref={logoRef}
+            className="h-10"
+            src="https://assets2.razerzone.com/images/phoenix/razer-ths-logo.svg"
+            alt="Razer Homepage"
+          />
+        </li>
+        {menuItems.map((item, index) => (
+          <li
+            key={index}
+            ref={(el) => (navItemsRef.current[index] = el)}
+            className="relative cursor-pointer"
+            onMouseEnter={() => setActiveDropdown(index)}
+            onMouseLeave={() => setActiveDropdown(null)}
+          >
+            {item.name}
+            {activeDropdown === index && (
+              <ul className="absolute top-full left-0 bg-black text-white p-2 rounded-md shadow-lg w-40">
+                {item.dropdown.map((subItem, subIndex) => (
+                  <li key={subIndex} className="p-2 hover:bg-[#44D62C]">
+                    {subItem}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };
